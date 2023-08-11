@@ -1,6 +1,6 @@
 import { exercises } from './exercises/exercises';
 
-const allExercises = [...exercises];
+const allScienceExercises = [...exercises];
 
 // allExercises.forEach((exo) => {
 //   console.log(exo);
@@ -8,4 +8,4 @@ const allExercises = [...exercises];
 // });
 // import('./server');
 
-export { allExercises };
+export { allScienceExercises };

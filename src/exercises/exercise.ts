@@ -28,6 +28,7 @@ export interface Exercise {
   isSingleStep: boolean;
   label: string;
   section: string;
+  subject: string;
   levels: string[];
   connector: '=' | '\\iff' | '\\approx';
   keys?: string[];

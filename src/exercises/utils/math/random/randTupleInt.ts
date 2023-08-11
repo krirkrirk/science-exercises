@@ -1,4 +1,4 @@
-import { arrayEqual } from '#root/utils/arrayEqual';
+import { arrayEqual } from '#root/exercises/utils/arrayEqual';
 import { randint } from './randint';
 
 interface randTupleIntOptions {

@@ -1,5 +1,5 @@
 {
-  "name": "math-exercises",
+  "name": "science-exercises",
   "version": "1.0.0",
   "description": "Science exercises generator for middle school and high school",
   "main": "lib/index.js",

@@ -452,8 +452,8 @@ export class Reaction {
 
     for (const reactionSpecies of this.reactionArray) {
       if (reactionSpecies.species) {
-        for (const atom of reactionSpecies.species.atoms) {
-          uniqueAtomNames.add(atom.name);
+        for (const atomData of reactionSpecies.species.atoms) {
+          uniqueAtomNames.add(atomData.atom.name);
         }
       }
     }
@@ -467,6 +467,17 @@ export class Reaction {
     for (const reactionSpecies of this.reactionArray) {
       if (reactionSpecies.species) {
         speciesFormula.push(reactionSpecies.species.formula);
+      }
+    }
+
+    return speciesFormula;
+  }
+  getSpeciesName(): string[] {
+    const speciesFormula: string[] = [];
+
+    for (const reactionSpecies of this.reactionArray) {
+      if (reactionSpecies.species) {
+        speciesFormula.push(reactionSpecies.species.name);
       }
     }
 

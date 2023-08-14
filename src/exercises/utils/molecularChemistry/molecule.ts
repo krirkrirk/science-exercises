@@ -1,13 +1,18 @@
-interface Atom {
+import { Atome, atomes } from './atome';
+
+interface AtomShortcut {
   name: string;
   count: number;
 }
-
+type AtomsData = {
+  atom: Atome;
+  count: number;
+};
 export class Molecule {
   name: string;
   formula: string;
   weight: number;
-  atoms: Atom[];
+  atoms: AtomsData[];
   isOrganic: boolean;
   state: 'solid' | 'liquid' | 'gas' | 'aqueous';
 
@@ -15,14 +20,19 @@ export class Molecule {
     name: string,
     formula: string,
     weight: number,
-    atoms: Atom[],
+    atoms: AtomShortcut[],
     isOrganic: boolean,
     state: 'solid' | 'liquid' | 'gas' | 'aqueous',
   ) {
     this.name = name;
     this.formula = formula;
     this.weight = weight;
-    this.atoms = atoms;
+    this.atoms = atoms.map((el) => {
+      return {
+        atom: atomes.find((el) => el.name === el.name)!,
+        count: el.count,
+      };
+    });
     this.isOrganic = isOrganic;
     this.state = state;
   }
@@ -683,7 +693,7 @@ export const molecules = [
     'solid',
   ),
 
-  new Molecule('Soufre', 'S₈', 256.52, [{ name: 'S', count: 8 }], false, 'solid'),
+  new Molecule('Soufre', 'S_8', 256.52, [{ name: 'S', count: 8 }], false, 'solid'),
 
   new Molecule(
     'Nitrate de potassium',

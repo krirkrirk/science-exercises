@@ -1,11 +1,6 @@
 import { exercises } from './exercises/exercises';
+import { molecules } from './exercises/utils/molecularChemistry/molecule';
 
 const allScienceExercises = [...exercises];
-
-// allExercises.forEach((exo) => {
-//   console.log(exo);
-//   console.log(exo.generator(10));
-// });
-// import('./server');
 
 export { allScienceExercises };

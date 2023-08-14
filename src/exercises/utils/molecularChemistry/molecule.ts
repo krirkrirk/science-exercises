@@ -29,7 +29,7 @@ export class Molecule {
     this.weight = weight;
     this.atoms = atoms.map((atomData) => {
       return {
-        atom: atomes.find((el) => atomData.name === el.name)!,
+        atom: atomes.find((el) => atomData.name === el.symbole)!,
         count: atomData.count,
       };
     });

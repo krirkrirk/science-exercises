@@ -27,10 +27,10 @@ export class Molecule {
     this.name = name;
     this.formula = formula;
     this.weight = weight;
-    this.atoms = atoms.map((el) => {
+    this.atoms = atoms.map((atomData) => {
       return {
-        atom: atomes.find((el) => el.name === el.name)!,
-        count: el.count,
+        atom: atomes.find((el) => atomData.name === el.name)!,
+        count: atomData.count,
       };
     });
     this.isOrganic = isOrganic;

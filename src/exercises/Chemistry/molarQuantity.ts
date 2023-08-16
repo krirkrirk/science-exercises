@@ -29,13 +29,16 @@ export function getMolarQuantityQuestion(): Question {
 
   const nG = mG / molarMassG;
 
-  const myAtoms = myRandomMolecule.atoms.map((el) => el.name);
+  const myAtoms = myRandomMolecule.atoms.map((el) => el.atom.name);
   const myAtomsMolarMass = myAtoms.map((atome) => {
-    return atomes.find((el) => el.symbole === atome)?.masseAtomique;
+    return atomes.find((el) => el.name === atome)?.masseAtomique;
   });
 
   const res = myAtomsMolarMass
-    .map((molarMass, index) => `$M_{(${myRandomMolecule.atoms[index].name})}$ = $${molarMass?.toFixed(0)}$ $g/mol$ ; `)
+    .map(
+      (molarMass, index) =>
+        `$M_{(${myRandomMolecule.atoms[index].atom.symbole})}$ = $${molarMass?.toFixed(0)}$ $g/mol$ ; `,
+    )
     .join('');
 
   const instruction = `Un échantillon de ${myRandomMolecule.name} $${myRandomMolecule.formula}$ a une masse de ${mG} g. 

@@ -28,11 +28,11 @@ export function getFormulaFromComposition(): Question {
   const randomMoleculeIndex = Math.floor(Math.random() * moleculesWith2Atoms.length);
   const myRandomMolecule = moleculesWith2Atoms[randomMoleculeIndex];
 
-  const [elementName1, elementName2] = myRandomMolecule.atoms.map((el) => el.name);
+  const [elementName1, elementName2] = myRandomMolecule.atoms.map((el) => el.atom.name);
   const [elementcount1, elementcount2] = myRandomMolecule.atoms.map((el) => el.count);
 
-  const elementMolarMass1 = atomes.find((el) => el.symbole === elementName1)!.masseAtomique;
-  const elementMolarMass2 = atomes.find((el) => el.symbole === elementName2)!.masseAtomique;
+  const elementMolarMass1 = atomes.find((el) => el.name === elementName1)!.masseAtomique;
+  const elementMolarMass2 = atomes.find((el) => el.name === elementName2)!.masseAtomique;
 
   const percentageElement1 = round(
     ((elementcount1 * elementMolarMass1) / (elementcount1 * elementMolarMass1 + elementcount2 * elementMolarMass2)) *
@@ -83,7 +83,7 @@ export function getFormulaFromComposition(): Question {
   const question: Question = {
     instruction: `Déterminer la formule brute à partir de la composition centésimale ${elementName1} : $${percentageElement1}$ % ${elementName2} : $${percentageElement2}$ ${elementName1}x${elementName2}y.`,
     answer: myRandomMolecule.formula,
-    keys: myRandomMolecule.atoms.map((el) => el.name),
+    keys: myRandomMolecule.atoms.map((el) => el.atom.name),
     getPropositions,
   };
   return question;

@@ -1,6 +1,8 @@
-class Atome {
-  nom: string;
-  symbole: string;
+import { AtomSymbols } from './atomSymbols';
+
+export class Atome {
+  name: string;
+  symbole: AtomSymbols;
   numeroAtomique: number;
   masseAtomique: number;
   configurationElectronique: string;
@@ -11,8 +13,8 @@ class Atome {
   pointFusion: number;
 
   constructor(
-    nom: string,
-    symbole: string,
+    name: string,
+    symbole: AtomSymbols,
     numeroAtomique: number,
     masseAtomique: number,
     configurationElectronique: string,
@@ -22,7 +24,7 @@ class Atome {
     masseVolumique: number,
     pointFusion: number,
   ) {
-    this.nom = nom;
+    this.name = name;
     this.symbole = symbole;
     this.numeroAtomique = numeroAtomique;
     this.masseAtomique = masseAtomique;

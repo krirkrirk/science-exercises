@@ -223,7 +223,7 @@ export const molecules = [
       { name: 'O', count: 2 },
       { name: 'Na', count: 1 },
     ],
-    false,
+    true,
     'solid',
   ),
   new Molecule(
@@ -396,6 +396,205 @@ export const molecules = [
     false,
     'solid',
   ),
+  new Molecule(
+    'Éthane',
+    'C_2H_6',
+    30.07,
+    [
+      { name: 'H', count: 6 },
+      { name: 'C', count: 2 },
+    ],
+    true,
+    'gas',
+  ),
+  new Molecule(
+    'Éthène',
+    'C_2H_4',
+    28.054,
+    [
+      { name: 'H', count: 4 },
+      { name: 'C', count: 2 },
+    ],
+    true,
+    'gas',
+  ),
+  new Molecule(
+    'Acétone',
+    'C_3H_6O',
+    58.08,
+    [
+      { name: 'H', count: 6 },
+      { name: 'C', count: 3 },
+      { name: 'O', count: 1 },
+    ],
+    true,
+    'liquid',
+  ),
+  new Molecule(
+    'Toluène',
+    'C_7H_8',
+    92.141,
+    [
+      { name: 'H', count: 8 },
+      { name: 'C', count: 7 },
+    ],
+    true,
+    'liquid',
+  ),
+  new Molecule(
+    'Éthylène glycol',
+    'C_2H_6O_2',
+    62.068,
+    [
+      { name: 'H', count: 6 },
+      { name: 'C', count: 2 },
+      { name: 'O', count: 2 },
+    ],
+    true,
+    'liquid',
+  ),
+  new Molecule(
+    'Butène',
+    'C_4H_8',
+    56.108,
+    [
+      { name: 'H', count: 8 },
+      { name: 'C', count: 4 },
+    ],
+    true,
+    'gas',
+  ),
+  new Molecule(
+    'Pentène',
+    'C_5H_{10}',
+    70.135,
+    [
+      { name: 'H', count: 10 },
+      { name: 'C', count: 5 },
+    ],
+    true,
+    'gas',
+  ),
+  new Molecule(
+    'Cyclohexane',
+    'C_6H_{12}',
+    84.162,
+    [
+      { name: 'H', count: 12 },
+      { name: 'C', count: 6 },
+    ],
+    true,
+    'liquid',
+  ),
+  new Molecule(
+    "Acétate d'éthyle",
+    'C_4H_8O_2',
+    88.106,
+    [
+      { name: 'H', count: 8 },
+      { name: 'C', count: 4 },
+      { name: 'O', count: 2 },
+    ],
+    true,
+    'liquid',
+  ),
+  new Molecule(
+    'Acétate de méthyle',
+    'C_3H_6O_2',
+    74.079,
+    [
+      { name: 'H', count: 6 },
+      { name: 'C', count: 3 },
+      { name: 'O', count: 2 },
+    ],
+    true,
+    'liquid',
+  ),
+  new Molecule(
+    'Acétate de butyle',
+    'C_6H_{12}O_2',
+    116.158,
+    [
+      { name: 'H', count: 12 },
+      { name: 'C', count: 6 },
+      { name: 'O', count: 2 },
+    ],
+    true,
+    'liquid',
+  ),
+  new Molecule(
+    'Phénol',
+    'C_6H_6O',
+    94.113,
+    [
+      { name: 'H', count: 6 },
+      { name: 'C', count: 6 },
+      { name: 'O', count: 1 },
+    ],
+    true,
+    'solid',
+  ),
+  new Molecule(
+    'Éthanal',
+    'C_2H_4O',
+    44.053,
+    [
+      { name: 'H', count: 4 },
+      { name: 'C', count: 2 },
+      { name: 'O', count: 1 },
+    ],
+    true,
+    'liquid',
+  ),
+  new Molecule(
+    'Butyraldéhyde',
+    'C_4H_8_O',
+    72.107,
+    [
+      { name: 'H', count: 8 },
+      { name: 'C', count: 4 },
+      { name: 'O', count: 1 },
+    ],
+    true,
+    'liquid',
+  ),
+  new Molecule(
+    'Furfural',
+    'C_5H_4O_2',
+    96.088,
+    [
+      { name: 'H', count: 4 },
+      { name: 'C', count: 5 },
+      { name: 'O', count: 2 },
+    ],
+    true,
+    'liquid',
+  ),
+  new Molecule(
+    'Acide formique',
+    'CH_2O_2',
+    46.025,
+    [
+      { name: 'H', count: 2 },
+      { name: 'C', count: 1 },
+      { name: 'O', count: 2 },
+    ],
+    true,
+    'liquid',
+  ),
+  new Molecule(
+    'Sucrose',
+    'C_{12}H_{22}O_{11}',
+    342.297,
+    [
+      { name: 'H', count: 22 },
+      { name: 'C', count: 12 },
+      { name: 'O', count: 11 },
+    ],
+    true,
+    'solid',
+  ),
+
   new Molecule(
     'Acide chlorhydrique',
     'HCl',
@@ -919,7 +1118,7 @@ export const molecules = [
       { name: 'H', count: 3 },
       { name: 'O', count: 1 },
     ],
-    true,
+    false,
     'aqueous',
   ),
 
@@ -931,11 +1130,11 @@ export const molecules = [
       { name: 'S', count: 1 },
       { name: 'O', count: 4 },
     ],
-    true,
+    false,
     'aqueous',
   ),
 
-  new Molecule('Ion fer(II)', 'Fe^{2+}', 55.845, [{ name: 'Fe', count: 1 }], true, 'aqueous'),
+  new Molecule('Ion fer(II)', 'Fe^{2+}', 55.845, [{ name: 'Fe', count: 1 }], false, 'aqueous'),
 
   new Molecule(
     'Ion hydroxyde',
@@ -945,11 +1144,11 @@ export const molecules = [
       { name: 'O', count: 1 },
       { name: 'H', count: 1 },
     ],
-    true,
+    false,
     'aqueous',
   ),
 
-  new Molecule('Ion argent(I)', 'Ag^+', 107.8682, [{ name: 'Ag', count: 1 }], true, 'aqueous'),
+  new Molecule('Ion argent(I)', 'Ag^+', 107.8682, [{ name: 'Ag', count: 1 }], false, 'aqueous'),
 
   new Molecule(
     'Ion phosphate',
@@ -959,7 +1158,7 @@ export const molecules = [
       { name: 'P', count: 1 },
       { name: 'O', count: 4 },
     ],
-    true,
+    false,
     'aqueous',
   ),
 
@@ -976,7 +1175,7 @@ export const molecules = [
     'solid',
   ),
 
-  new Molecule('Ion cuivre(II)', 'Cu^{2+}', 63.546, [{ name: 'Cu', count: 1 }], true, 'aqueous'),
+  new Molecule('Ion cuivre(II)', 'Cu^{2+}', 63.546, [{ name: 'Cu', count: 1 }], false, 'aqueous'),
 
   new Molecule(
     'Acétate de sodium',

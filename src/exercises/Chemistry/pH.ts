@@ -24,7 +24,7 @@ export function getpH(): Question {
 
   const concentrationHydrogene = randomNumber * 10 ** -randomTenPower;
 
-  const instruction = `Calculez le pH d'une solution ayant une concentration en ions hydrogène (H+) de $${randomNumber} \\times 10^{-${randomTenPower}}$ mol/L.`;
+  const instruction = `Calculer le pH d'une solution ayant une concentration en ions hydrogène (H+) de $${randomNumber} \\times 10^{-${randomTenPower}}$ mol/L.`;
 
   const getPropositions = (n: number) => {
     const res: Proposition[] = [];
@@ -61,7 +61,7 @@ export function getpH(): Question {
 
   const question: Question = {
     instruction,
-    startStatement: `[H_3O^+]`,
+    startStatement: `pH`,
     answer: round(-Math.log10(concentrationHydrogene), 1) + '',
     keys: ['log'],
     getPropositions,

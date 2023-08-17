@@ -19,16 +19,16 @@ export const snellDescartes: Exercise = {
 
 export function getSnellDescartes(): Question {
   const refractionIndex = [
-    { Material: "l'air", Material2: "d'air", n: 1 },
-    { Material: "l'eau", Material2: "d'eau", n: 1.33 },
-    { Material: "l'Ethanol", Material2: 'en Ethanol', n: 1.36 },
-    { Material: "l'huile d'olive", Material2: "d'huile d'olive", n: 1.47 },
-    { Material: 'la glace', Material2: 'de glace', n: 1.31 },
-    { Material: 'le soda', Material2: 'de soda', n: 1.46 },
-    { Material: 'le plexiglas', Material2: 'en plexiglas', n: 1.49 },
-    { Material: 'le verre crown', Material2: 'en verre crown', n: 1.52 },
-    { Material: 'le verre flint', Material2: 'en verre flint', n: 1.66 },
-    { Material: 'le diamant', Material2: 'en diamant', n: 2.417 },
+    { Material: "l'air", Material2: "d'air", Material3: "de l'air", n: 1 },
+    { Material: "l'eau", Material2: "d'eau", Material3: "de l'eau", n: 1.33 },
+    { Material: "l'Ethanol", Material2: 'en Ethanol', Material3: "de l'Ethanol", n: 1.36 },
+    { Material: "l'huile d'olive", Material2: "d'huile d'olive", Material3: "de l'huile d'olive", n: 1.47 },
+    { Material: 'la glace', Material2: 'de glace', Material3: 'de la glace', n: 1.31 },
+    { Material: 'le soda', Material2: 'de soda', Material3: 'du soda', n: 1.46 },
+    { Material: 'le plexiglas', Material2: 'en plexiglas', Material3: 'du plexiglas', n: 1.49 },
+    { Material: 'le verre crown', Material2: 'en verre crown', Material3: 'du verre crown', n: 1.52 },
+    { Material: 'le verre flint', Material2: 'en verre flint', Material3: 'du verre flint', n: 1.66 },
+    { Material: 'le diamant', Material2: 'en diamant', Material3: 'du diamant', n: 2.417 },
   ];
 
   const randomMaterial1 = randint(0, refractionIndex.length - 1);
@@ -39,8 +39,8 @@ export function getSnellDescartes(): Question {
   const ramdonAngleIncidenceDeg = randint(10, 90);
 
   const instruction = `Un rayon de lumière se propage dans ${refractionIndex[randomMaterial1].Material} (n1 ≈ ${n1}) et atteint une surface ${refractionIndex[randomMaterial2].Material2}
-  (n2 ≈ ${n2}) sous un angle d'incidence de ${ramdonAngleIncidenceDeg} degrés. $\\\\$ Calculez l'angle de
-  réfraction de la lumière à l'intérieur de ${refractionIndex[randomMaterial2].Material} en utilisant la loi de Snell-Descartes.`;
+  (n2 ≈ ${n2}) sous un angle d'incidence de ${ramdonAngleIncidenceDeg} degrés. $\\\\$ Calculer l'angle de
+  réfraction de la lumière à l'intérieur ${refractionIndex[randomMaterial2].Material3} en utilisant la loi de Snell-Descartes.`;
 
   const angleIncidenceRad = (ramdonAngleIncidenceDeg * Math.PI) / 180;
 
@@ -82,7 +82,7 @@ export function getSnellDescartes(): Question {
   const question: Question = {
     instruction,
     answer: `${angleRefractionDeg.toFixed(1)}°`,
-    keys: ['sin', 'arcsin'],
+    keys: ['sin', 'arcsin', 'degree'],
     getPropositions,
   };
   return question;

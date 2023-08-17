@@ -24,7 +24,7 @@ export function getKineticEnergyQuestion(): Question {
   const kineticEnergy = 0.5 * mass * velocity ** 2;
 
   const instruction = `Une voiture ayant une masse de $${mass}$ kg qui se déplace le long d'une route. La voiture accélère et atteint une vitesse de $${velocity}$ m/s.
-   $\\\\$ Calculez l'énergie cinétique (en kJ) de la voiture lorsqu'elle atteint cette vitesse.`;
+   $\\\\$ Calculer l'énergie cinétique (en kJ) de la voiture lorsqu'elle atteint cette vitesse.`;
 
   const getPropositions = (n: number) => {
     const res: Proposition[] = [];

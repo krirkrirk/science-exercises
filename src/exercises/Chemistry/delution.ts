@@ -24,9 +24,9 @@ export function getDelution(): Question {
   const concentrationFille = round(Math.random() * 0.05 + 0.01, 2); // entre 0.01 et 0.06 mol/L pour C2
   const volumeMere = round((volumeFille * concentrationFille) / concentrationMere, 2);
 
-  const instruction = `Soit une solution mère de concentration C1 = $${concentrationMere}$ mol/L. On souhaite préparer
-  une solution ﬁlle de volume V2 = $${volumeFille}$ mL de concentration C2 = $${concentrationFille}$ mol/L.
-  $\\\\$ Calculer le volume V1 à prélever.`;
+  const instruction = `Soit une solution mère de concentration $C_1$ = $${concentrationMere}$ mol/L. On souhaite préparer
+  une solution ﬁlle de volume $V_2$ = $${volumeFille}$ mL de concentration $C_2$ = $${concentrationFille}$ mol/L.
+  $\\\\$ Calculer le volume $V_1$ à prélever.`;
 
   const getPropositions = (n: number) => {
     const res: Proposition[] = [];
@@ -73,7 +73,7 @@ export function getDelution(): Question {
 
   const question: Question = {
     instruction,
-    startStatement: `V1`,
+    startStatement: `V_1`,
     answer: volumeMere + ' \\ mL',
     keys: ['mL'],
     getPropositions,

@@ -971,7 +971,7 @@ export const molecules = [
     'solid',
   ),
 
-  new Molecule('Chlore', 'Cl_2', 70.906, [{ name: 'Cl', count: 2 }], false, 'gas'),
+  new Molecule('Dichlore', 'Cl_2', 70.906, [{ name: 'Cl', count: 2 }], false, 'gas'),
 
   new Molecule(
     "Protoxyde d'azote",
@@ -1227,7 +1227,7 @@ export const molecules = [
     'solid',
   ),
 
-  new Molecule('Soufre', 'S_8', 256.52, [{ name: 'S', count: 8 }], false, 'solid'),
+  new Molecule('cyclooctasoufre ', 'S_8', 256.52, [{ name: 'S', count: 8 }], false, 'solid'),
 
   new Molecule(
     'Hydroxyde de magnésium',

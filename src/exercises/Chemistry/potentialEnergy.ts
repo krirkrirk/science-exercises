@@ -6,7 +6,7 @@ import { v4 } from 'uuid';
 
 export const potentialEnergy: Exercise = {
   id: 'potentialEnergy',
-  connector: '\\iff',
+  connector: '=',
   instruction: '',
   label: "Calcul de l'énergie potentielle",
   levels: ['4', '3', '2'],

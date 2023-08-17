@@ -52,7 +52,7 @@ export function getChemicalEquations(): Question {
   const question: Question = {
     instruction: reaction.getReactionWithoutCoef(),
     answer: reaction.getReactionString(),
-    keys: [...reaction.getSpeciesName(), '\\rightarrow'],
+    keys: [...reaction.getSpeciesName(), 'rightarrow'],
     getPropositions,
   };
   return question;

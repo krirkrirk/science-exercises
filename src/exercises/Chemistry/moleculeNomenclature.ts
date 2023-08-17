@@ -63,6 +63,7 @@ export function getMoleculeNomenclature(): Question {
     answer: myRandomMolecule.name,
     keys: [],
     getPropositions,
+    answerFormat: 'raw',
   };
   return question;
 }

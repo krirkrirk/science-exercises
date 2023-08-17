@@ -15,7 +15,10 @@ export interface Question {
   instruction?: string;
   startStatement?: string;
   answer: string;
+  answerFormat?: 'tex' | 'raw';
   keys?: string[];
+  allowAlphabet?: boolean;
+
   commands?: string[];
   coords?: number[];
   options?: any;

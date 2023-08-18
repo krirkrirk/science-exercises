@@ -8,7 +8,7 @@ export const potentialEnergy: Exercise = {
   id: 'potentialEnergy',
   connector: '=',
   instruction: '',
-  label: "Calcul de l'énergie potentielle",
+  label: "Calculer l'énergie potentielle",
   levels: ['4', '3', '2'],
   section: 'Mécanique',
   subject: 'Physique',
@@ -25,7 +25,7 @@ export function getPotentialEnergy(): Question {
   const potentialEnergy = mass * 9.81 * height;
 
   const instruction = `Un objet de masse ${mass} kg est suspendu à une hauteur de ${height} mètres. Il est ensuite relâché et tombe librement.
-  $\\\\$ Calculer l'énergie potentielle de l'objet. (Supposons que l'accélération due à la gravité soit de 9,81 m/s²)`;
+  $\\\\$ Calculer l'énergie potentielle de l'objet. (Supposons que l'accélération due à la gravité est de 9,81 m/s²)`;
 
   const getPropositions = (n: number) => {
     const res: Proposition[] = [];

@@ -10,7 +10,7 @@ export const molarQuantity: Exercise = {
   id: 'molarQuantity',
   connector: '=',
   instruction: '',
-  label: 'Calcul de la quantité de matière',
+  label: 'Calculer une quantité de matière',
   levels: ['4', '3', '2'],
   section: 'Constitution et transformations de la matière',
   subject: 'Chimie',

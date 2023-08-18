@@ -1,7 +1,5 @@
 import { Exercise, Proposition, Question } from '#root/exercises/exercise';
 import { getDistinctQuestions } from '#root/exercises/utils/getDistinctQuestions';
-import { randint } from '#root/exercises/utils/math/random/randint';
-import { round } from '#root/exercises/utils/math/round';
 import { molecules } from '#root/exercises/utils/molecularChemistry/molecule';
 import { shuffle } from '#root/exercises/utils/shuffle';
 import { v4 } from 'uuid';
@@ -20,7 +18,7 @@ export const moleculeNomenclature: Exercise = {
 };
 
 export function getMoleculeNomenclature(): Question {
-  const organicMolecule = molecules.filter((molecule) => molecule.isOrganic);
+  const organicMolecule = molecules.filter((molecule) => molecule.isOrganic && molecule.type);
   const randomMoleculeIndex = Math.floor(Math.random() * organicMolecule.length);
   const myRandomMolecule = organicMolecule[randomMoleculeIndex];
 
@@ -60,7 +58,7 @@ export function getMoleculeNomenclature(): Question {
 
   const question: Question = {
     instruction,
-    answer: myRandomMolecule.name,
+    answer: myRandomMolecule.iupact!,
     keys: [],
     getPropositions,
     answerFormat: 'raw',

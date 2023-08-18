@@ -15,6 +15,8 @@ export class Molecule {
   atoms: AtomsData[];
   isOrganic: boolean;
   state: 'solid' | 'liquid' | 'gas' | 'aqueous';
+  iupact?: string;
+  type?: string;
 
   constructor(
     name: string,
@@ -23,6 +25,8 @@ export class Molecule {
     atoms: AtomShortcut[],
     isOrganic: boolean,
     state: 'solid' | 'liquid' | 'gas' | 'aqueous',
+    iupact?: string,
+    type?: string,
   ) {
     this.name = name;
     this.formula = formula;
@@ -35,6 +39,8 @@ export class Molecule {
     });
     this.isOrganic = isOrganic;
     this.state = state;
+    this.iupact = iupact;
+    this.type = type;
   }
 }
 
@@ -62,6 +68,8 @@ export const molecules = [
     ],
     true,
     'gas',
+    'Methane',
+    'Alcane',
   ),
   new Molecule(
     'Dioxyde de carbone',
@@ -107,6 +115,8 @@ export const molecules = [
     ],
     true,
     'liquid',
+    'Ethanol',
+    'Alcool',
   ),
   new Molecule(
     'Glucose',
@@ -131,6 +141,8 @@ export const molecules = [
     ],
     true,
     'liquid',
+    'Méthanol',
+    'Alcohol',
   ),
   new Molecule(
     'Propane',
@@ -142,6 +154,8 @@ export const molecules = [
     ],
     true,
     'gas',
+    'Propane',
+    'Alcane',
   ),
   new Molecule(
     'Butane',
@@ -153,6 +167,8 @@ export const molecules = [
     ],
     true,
     'gas',
+    'Butane',
+    'Alkane',
   ),
   new Molecule(
     'Acide sulfurique',
@@ -167,17 +183,6 @@ export const molecules = [
     'liquid',
   ),
   new Molecule(
-    'Éthylène',
-    'C_2H_4',
-    28.054,
-    [
-      { name: 'C', count: 2 },
-      { name: 'H', count: 4 },
-    ],
-    true,
-    'gas',
-  ),
-  new Molecule(
     'Propylène',
     'C_3H_6',
     42.081,
@@ -187,6 +192,8 @@ export const molecules = [
     ],
     true,
     'gas',
+    'Propène',
+    'Alkene',
   ),
   new Molecule(
     'Benzène',
@@ -198,9 +205,11 @@ export const molecules = [
     ],
     true,
     'liquid',
+    'Benzène',
+    'Aromatic',
   ),
   new Molecule(
-    'Ammonitrile',
+    'Acetonitrile',
     'CH_3CN',
     41.053,
     [
@@ -210,6 +219,8 @@ export const molecules = [
     ],
     true,
     'liquid',
+    'Acetonitrile',
+    'Nitrile',
   ),
   new Molecule(
     'Méthanal',
@@ -222,6 +233,8 @@ export const molecules = [
     ],
     true,
     'gas',
+    'Méthanal',
+    'Aldehyde',
   ),
   new Molecule(
     'Méthanoate de sodium',
@@ -233,7 +246,7 @@ export const molecules = [
       { name: 'O', count: 2 },
       { name: 'Na', count: 1 },
     ],
-    true,
+    false,
     'solid',
   ),
   new Molecule(
@@ -381,6 +394,8 @@ export const molecules = [
     ],
     true,
     'liquid',
+    'Acide éthanoïque',
+    'Acide carboxylique',
   ),
   new Molecule('Magnésium', 'Mg', 24.305, [{ name: 'Mg', count: 2 }], false, 'solid'),
   new Molecule(
@@ -416,9 +431,11 @@ export const molecules = [
     ],
     true,
     'gas',
+    'Éthane',
+    'Alkane',
   ),
   new Molecule(
-    'Éthène',
+    'Éthylène',
     'C_2H_4',
     28.054,
     [
@@ -427,6 +444,8 @@ export const molecules = [
     ],
     true,
     'gas',
+    'Éthène',
+    'Alkene',
   ),
   new Molecule(
     'Acétone',
@@ -439,6 +458,8 @@ export const molecules = [
     ],
     true,
     'liquid',
+    'Acétone',
+    'Cétone',
   ),
   new Molecule(
     'Toluène',
@@ -450,6 +471,8 @@ export const molecules = [
     ],
     true,
     'liquid',
+    'Toluène',
+    'Aromatique',
   ),
   new Molecule(
     'Éthylène glycol',
@@ -473,6 +496,8 @@ export const molecules = [
     ],
     true,
     'gas',
+    'Butène',
+    'Alkene',
   ),
   new Molecule(
     'Pentène',
@@ -484,6 +509,8 @@ export const molecules = [
     ],
     true,
     'gas',
+    'Pentène',
+    'Alkene',
   ),
   new Molecule(
     'Cyclohexane',
@@ -495,6 +522,8 @@ export const molecules = [
     ],
     true,
     'liquid',
+    'Cyclohexane',
+    'Alkane cyclique',
   ),
   new Molecule(
     "Acétate d'éthyle",
@@ -507,6 +536,8 @@ export const molecules = [
     ],
     true,
     'liquid',
+    "Acétate d'éthyle",
+    'Ester',
   ),
   new Molecule(
     'Acétate de méthyle',
@@ -519,6 +550,8 @@ export const molecules = [
     ],
     true,
     'liquid',
+    'Acétate de méthyle',
+    'Ester',
   ),
   new Molecule(
     'Acétate de butyle',
@@ -531,6 +564,8 @@ export const molecules = [
     ],
     true,
     'liquid',
+    'Acétate de butyle',
+    'Ester',
   ),
   new Molecule(
     'Phénol',
@@ -543,6 +578,8 @@ export const molecules = [
     ],
     true,
     'solid',
+    'Phénol',
+    'Phénol',
   ),
   new Molecule(
     'Éthanal',
@@ -555,10 +592,12 @@ export const molecules = [
     ],
     true,
     'liquid',
+    'Éthanal',
+    'Aldéhyde',
   ),
   new Molecule(
     'Butyraldéhyde',
-    'C_4H_8_O',
+    'C_4H_8O',
     72.107,
     [
       { name: 'H', count: 8 },
@@ -567,6 +606,8 @@ export const molecules = [
     ],
     true,
     'liquid',
+    'Butyraldéhyde',
+    'Aldéhyde',
   ),
   new Molecule(
     'Furfural',
@@ -591,6 +632,8 @@ export const molecules = [
     ],
     true,
     'liquid',
+    'Acide méthanoïque',
+    'Acide carboxylique',
   ),
   new Molecule(
     'Sucrose',
@@ -1253,4 +1296,81 @@ export const molecules = [
     false,
     'solid',
   ),
+  /*new Molecule('Méthanol', 'CH_3OH', 32.04, [{ name: 'C', count: 1 }, { name: 'H', count: 4 }, { name: 'O', count: 1 }], true, 'liquid', 'Méthanol', 'Alcool'),
+  new Molecule('Éthanol', 'C_2H_5OH', 46.07, [{ name: 'C', count: 2 }, { name: 'H', count: 6 }, { name: 'O', count: 1 }], true, 'liquid', 'Éthanol', 'Alcool'),
+  new Molecule('Propanol', 'C_3H_7OH', 60.1, [{ name: 'C', count: 3 }, { name: 'H', count: 8 }, { name: 'O', count: 1 }], true, 'liquid', 'Propan-1-ol', 'Alcool'),
+  new Molecule('Butanol', 'C_4H_9OH', 74.12, [{ name: 'C', count: 4 }, { name: 'H', count: 10 }, { name: 'O', count: 1 }], true, 'liquid', 'Butan-1-ol', 'Alcool'),
+  new Molecule('Pentanol', 'C_5H_{11}OH', 88.15, [{ name: 'C', count: 5 }, { name: 'H', count: 12 }, { name: 'O', count: 1 }], true, 'liquid', 'Pentan-1-ol', 'Alcool'),
+  new Molecule(
+    'Acide formique',
+    'CH2O2',
+    46.025,
+    [
+      { name: 'C', count: 1 },
+      { name: 'H', count: 2 },
+      { name: 'O', count: 2 },
+    ],
+    false,
+    'liquid',
+    'Acide méthanoïque',
+    'Acid'
+  ),
+  new Molecule(
+    'Acide acétique',
+    'C2H4O2',
+    60.052,
+    [
+      { name: 'C', count: 2 },
+      { name: 'H', count: 4 },
+      { name: 'O', count: 2 },
+    ],
+    false,
+    'liquid',
+    'Acide éthanoïque',
+    'Acid'
+  ),
+  new Molecule(
+    'Acide propionique',
+    'C3H6O2',
+    74.079,
+    [
+      { name: 'C', count: 3 },
+      { name: 'H', count: 6 },
+      { name: 'O', count: 2 },
+    ],
+    false,
+    'liquid',
+    'Acide propanoïque',
+    'Acid'
+  ),
+  new Molecule(
+    'Acide butyrique',
+    'C4H8O2',
+    88.106,
+    [
+      { name: 'C', count: 4 },
+      { name: 'H', count: 8 },
+      { name: 'O', count: 2 },
+    ],
+    false,
+    'liquid',
+    'Acide butanoïque',
+    'Acid'
+  ),
+  new Molecule(
+    'Acide valérique',
+    'C5H10O2',
+    102.133,
+    [
+      { name: 'C', count: 5 },
+      { name: 'H', count: 10 },
+      { name: 'O', count: 2 },
+    ],
+    false,
+    'liquid',
+    'Acide pentanoïque',
+    'Acid'
+  ),*/
 ];
+
+/*for (const molecule of molecules) if (molecule.iupact) console.log(molecule.iupact);*/

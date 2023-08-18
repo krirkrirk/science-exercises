@@ -81,9 +81,9 @@ export function getFormulaFromComposition(): Question {
   };
 
   const question: Question = {
-    instruction: `Déterminer la formule brute à partir de la composition centésimale ${elementName1} : $${percentageElement1}$ % ${elementName2} : $${percentageElement2}$ $${elementName1}_x${elementName2}_y$.`,
+    instruction: `Déterminer la formule brute $${elementName1}_x${elementName2}_y$ à partir de la composition centésimale $${elementName1}$ : $${percentageElement1}$ $\\%$ $${elementName2}$ : $${percentageElement2}$ $\\%$.`,
     answer: myRandomMolecule.formula,
-    keys: myRandomMolecule.atoms.map((el) => el.atom.name),
+    keys: [...myRandomMolecule.atoms.map((el) => el.atom.name), 'underscore'],
     getPropositions,
   };
   return question;

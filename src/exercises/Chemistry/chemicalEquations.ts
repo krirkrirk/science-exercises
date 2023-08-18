@@ -50,7 +50,7 @@ export function getChemicalEquations(): Question {
   };
 
   const question: Question = {
-    instruction: reaction.getReactionWithoutCoef(),
+    instruction: 'Equilibrez la réaction suivante :$\\\\$ ' + reaction.getReactionWithoutCoef(),
     answer: reaction.getReactionString(),
     keys: [...reaction.getSpeciesName(), 'rightarrow'],
     getPropositions,

@@ -8,7 +8,7 @@ export const kineticEnergy: Exercise = {
   id: 'kineticEnergy',
   connector: '=',
   instruction: '',
-  label: "Calcul de l'énergie cinétique",
+  label: "Calculer l'énergie cinétique",
   levels: ['4', '3', '2'],
   section: 'Mécanique',
   subject: 'Physique',

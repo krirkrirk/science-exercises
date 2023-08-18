@@ -9,7 +9,7 @@ export const chemicalReactionsProduct: Exercise = {
   id: 'chemicalReactionsProduct',
   connector: '\\iff',
   instruction: '',
-  label: "Identifiez le produit ou le réactif manquant d'une réaction chimique donnée.",
+  label: "Identifier le produit ou le réactif manquant d'une réaction chimique donnée",
   levels: ['4', '3', '2'],
   section: 'Réaction chimique',
   subject: 'Chimie',
@@ -56,10 +56,10 @@ export function getChemicalReactionsProduct(): Question {
 
   const question: Question = {
     instruction:
-      "Completer la réaction suivante en donnant l'élement manquant. $\\\\$ " +
+      "Completer la réaction suivante en donnant l'élement manquant : $\\\\$ " +
       reaction.getReactionWithQuestionMark(randomSpacieIndex),
     answer: randomSpacieCoef + '' + randomSpacieFormula,
-    keys: reaction.getUniqueAtomNames(),
+    keys: [...reaction.getUniqueAtomNames(), 'underscore'],
     getPropositions,
   };
   return question;

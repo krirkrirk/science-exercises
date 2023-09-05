@@ -57,6 +57,7 @@ export function getSnellDescartes(): Question {
       id: v4() + '',
       statement: `${angleRefractionDeg.toFixed(1)}  °`,
       isRightAnswer: true,
+      format: 'tex',
     });
 
     for (let i = 0; i < n - 1; i++) {
@@ -68,6 +69,7 @@ export function getSnellDescartes(): Question {
           id: v4() + '',
           statement: (randint(100, 900) / 10).toFixed(1) + '°',
           isRightAnswer: false,
+          format: 'tex',
         };
 
         isDuplicate = res.some((p) => p.statement === proposition.statement);
@@ -84,6 +86,7 @@ export function getSnellDescartes(): Question {
     answer: `${angleRefractionDeg.toFixed(1)}°`,
     keys: ['sin', 'arcsin', 'degree'],
     getPropositions,
+    answerFormat: 'tex',
   };
   return question;
 }

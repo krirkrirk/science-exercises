@@ -52,6 +52,7 @@ export function getMolarQuantityQuestion(): Question {
       id: v4() + '',
       statement: round(nG, 2) + '\\ mol',
       isRightAnswer: true,
+      format: 'tex',
     });
 
     for (let i = 0; i < n - 1; i++) {
@@ -63,6 +64,7 @@ export function getMolarQuantityQuestion(): Question {
           id: v4() + '',
           statement: round(Math.random() * 5, 2) + '\\ mol',
           isRightAnswer: false,
+          format: 'tex',
         };
 
         isDuplicate = res.some((p) => p.statement === proposition.statement);
@@ -80,6 +82,7 @@ export function getMolarQuantityQuestion(): Question {
     answer: `${round(nG, 2)}\\ mol`,
     keys: ['mol'],
     getPropositions,
+    answerFormat: 'tex',
   };
   return question;
 }

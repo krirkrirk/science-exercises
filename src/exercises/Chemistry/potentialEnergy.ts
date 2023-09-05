@@ -34,6 +34,7 @@ export function getPotentialEnergy(): Question {
       id: v4() + '',
       statement: round(potentialEnergy, 2) + ' \\ J',
       isRightAnswer: true,
+      format: 'tex',
     });
 
     for (let i = 0; i < n - 1; i++) {
@@ -45,6 +46,7 @@ export function getPotentialEnergy(): Question {
           id: v4() + '',
           statement: round(potentialEnergy * (0.3 + Math.random() * 1.5), 2) + ' \\ J',
           isRightAnswer: false,
+          format: 'tex',
         };
 
         isDuplicate = res.some((p) => p.statement === proposition.statement);
@@ -62,6 +64,7 @@ export function getPotentialEnergy(): Question {
     answer: `${round(potentialEnergy, 2)}  \\ J`,
     keys: ['J'],
     getPropositions,
+    answerFormat: 'tex',
   };
   return question;
 }

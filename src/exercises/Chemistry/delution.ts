@@ -35,12 +35,14 @@ export function getDelution(): Question {
       id: v4() + '',
       statement: volumeMere + ' \\ mL',
       isRightAnswer: true,
+      format: 'tex',
     });
 
     res.push({
       id: v4() + '',
       statement: round((volumeFille * concentrationMere) / concentrationFille, 2) + ' \\ mL',
       isRightAnswer: false,
+      format: 'tex',
     });
 
     if (n > 2)
@@ -48,6 +50,7 @@ export function getDelution(): Question {
         id: v4() + '',
         statement: round(concentrationMere / (volumeFille * concentrationFille), 2) + ' \\ mL',
         isRightAnswer: false,
+        format: 'tex',
       });
 
     for (let i = 0; i < n - 3; i++) {
@@ -60,6 +63,7 @@ export function getDelution(): Question {
           id: v4() + '',
           statement: wrongAnswer.toFixed(2) + ' \\ mL',
           isRightAnswer: false,
+          format: 'tex',
         };
 
         isDuplicate = res.some((p) => p.statement === proposition.statement);
@@ -77,6 +81,7 @@ export function getDelution(): Question {
     answer: volumeMere + ' \\ mL',
     keys: ['mL'],
     getPropositions,
+    answerFormat: 'tex',
   };
   return question;
 }

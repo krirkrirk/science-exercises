@@ -32,6 +32,7 @@ export function getMoleculeNomenclature(): Question {
       id: v4() + '',
       statement: myRandomMolecule.name,
       isRightAnswer: true,
+      format: 'raw',
     });
 
     for (let i = 0; i < n - 1; i++) {
@@ -45,6 +46,7 @@ export function getMoleculeNomenclature(): Question {
           id: v4() + '',
           statement: myRandomMolecule.name,
           isRightAnswer: false,
+          format: 'raw',
         };
 
         isDuplicate = res.some((p) => p.statement === proposition.statement);

@@ -27,6 +27,7 @@ export function getChemicalEquations(): Question {
       id: v4() + '',
       statement: reaction.getReactionString(),
       isRightAnswer: true,
+      format: 'tex',
     });
 
     for (let i = 0; i < n - 1; i++) {
@@ -38,6 +39,7 @@ export function getChemicalEquations(): Question {
           id: v4() + '',
           statement: reaction.getReactionWithWrongCoef(),
           isRightAnswer: false,
+          format: 'tex',
         };
 
         isDuplicate = res.some((p) => p.statement === proposition.statement);
@@ -54,6 +56,7 @@ export function getChemicalEquations(): Question {
     answer: reaction.getReactionString(),
     keys: [...reaction.getSpeciesName(), 'rightarrow'],
     getPropositions,
+    answerFormat: 'tex',
   };
   return question;
 }

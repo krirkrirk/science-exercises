@@ -37,6 +37,7 @@ export function getPerceivedFrequency(): Question {
       id: v4() + '',
       statement: round(perceivedFrequency, 0) + ' \\ Hz',
       isRightAnswer: true,
+      format: 'tex',
     });
 
     for (let i = 0; i < n - 1; i++) {
@@ -48,6 +49,7 @@ export function getPerceivedFrequency(): Question {
           id: v4() + '',
           statement: round(perceivedFrequency * (0.3 + Math.random() * 1.5), 0) + ' \\ Hz',
           isRightAnswer: false,
+          format: 'tex',
         };
 
         isDuplicate = res.some((p) => p.statement === proposition.statement);
@@ -64,6 +66,7 @@ export function getPerceivedFrequency(): Question {
     answer: `${round(perceivedFrequency, 0)} \\ Hz`,
     keys: ['Hz'],
     getPropositions,
+    answerFormat: 'tex',
   };
   return question;
 }

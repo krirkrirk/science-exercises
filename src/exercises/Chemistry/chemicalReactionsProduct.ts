@@ -32,6 +32,7 @@ export function getChemicalReactionsProduct(): Question {
       id: v4() + '',
       statement: randomSpacieFormula + '',
       isRightAnswer: true,
+      format: 'tex',
     });
 
     for (let i = 0; i < n - 1; i++) {
@@ -43,6 +44,7 @@ export function getChemicalReactionsProduct(): Question {
           id: v4() + '',
           statement: molecules[randint(0, molecules.length)].formula,
           isRightAnswer: false,
+          format: 'tex',
         };
 
         isDuplicate = res.some((p) => p.statement === proposition.statement);
@@ -61,6 +63,7 @@ export function getChemicalReactionsProduct(): Question {
     answer: randomSpacieCoef + '' + randomSpacieFormula,
     keys: [...reaction.getUniqueAtomNames(), 'underscore'],
     getPropositions,
+    answerFormat: 'tex',
   };
   return question;
 }

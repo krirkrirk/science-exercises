@@ -33,6 +33,7 @@ export function getKineticEnergyQuestion(): Question {
       id: v4() + '',
       statement: round(kineticEnergy / 1000, 2) + ' \\ kJ',
       isRightAnswer: true,
+      format: 'tex',
     });
 
     for (let i = 0; i < n - 1; i++) {
@@ -44,6 +45,7 @@ export function getKineticEnergyQuestion(): Question {
           id: v4() + '',
           statement: round((kineticEnergy / 1000) * (0.3 + Math.random() * 1.5), 2) + ' \\ kJ',
           isRightAnswer: false,
+          format: 'tex',
         };
 
         isDuplicate = res.some((p) => p.statement === proposition.statement);
@@ -61,6 +63,7 @@ export function getKineticEnergyQuestion(): Question {
     answer: `${round(kineticEnergy / 1000, 2)} \\ kJ`,
     keys: ['kJ'],
     getPropositions,
+    answerFormat: 'tex',
   };
   return question;
 }

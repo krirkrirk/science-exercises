@@ -33,6 +33,7 @@ export function getpH(): Question {
       id: v4() + '',
       statement: round(-Math.log10(concentrationHydrogene), 1) + '',
       isRightAnswer: true,
+      format: 'tex',
     });
 
     for (let i = 0; i < n - 1; i++) {
@@ -48,6 +49,7 @@ export function getpH(): Question {
           id: v4() + '',
           statement: wrongAnswer,
           isRightAnswer: false,
+          format: 'tex',
         };
 
         isDuplicate = res.some((p) => p.statement === proposition.statement);
@@ -65,6 +67,7 @@ export function getpH(): Question {
     answer: round(-Math.log10(concentrationHydrogene), 1) + '',
     keys: ['log'],
     getPropositions,
+    answerFormat: 'tex',
   };
   return question;
 }

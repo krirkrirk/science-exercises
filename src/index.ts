@@ -1,5 +1,5 @@
 import { exercises } from './exercises/exercises';
-import { molecules } from './exercises/utils/molecularChemistry/molecule';
+// import { molecules } from './exercises/utils/molecularChemistry/molecule';
 
 const allScienceExercises = [...exercises];
 

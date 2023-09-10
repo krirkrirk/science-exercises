@@ -18,8 +18,6 @@ export interface Question {
   answer: string;
   answerFormat?: 'tex' | 'raw';
   keys?: string[];
-  allowAlphabet?: boolean;
-
   commands?: string[];
   coords?: number[];
   options?: any;
@@ -31,10 +29,22 @@ export interface Exercise {
   instruction: string;
   isSingleStep: boolean;
   label: string;
-  section: string;
-  subject: string;
-  levels: string[];
+  sections: ScienceSection[];
+  levels: ScienceLevel[];
   connector: '=' | '\\iff' | '\\approx';
   keys?: string[];
   generator(nb: number, options?: GeneratorOptions): Question[];
+  subject: 'Chimie' | 'Physique';
 }
+
+export type ScienceLevel = '6ème' | '5ème' | '4ème' | '3ème' | '2nde' | '1reSpé' | 'Term';
+
+export type ScienceSection =
+  | 'Réaction chimique'
+  | 'Chimie des solutions'
+  | 'Chimie organique'
+  | 'Mécanique'
+  | 'Lumière'
+  | 'Acide / Base'
+  | 'Constitution et transformations de la matière'
+  | 'Ondes';

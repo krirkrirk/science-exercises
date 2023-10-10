@@ -1,6 +1,6 @@
 {
   "name": "science-exercises",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "Science exercises generator for middle school and high school",
   "main": "lib/index.js",
   "files": [

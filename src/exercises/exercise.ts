@@ -22,6 +22,7 @@ export interface Question {
   coords?: number[];
   options?: any;
   getPropositions: (n: number) => Proposition[];
+  answerType: 'QCM' | 'free' | undefined;
 }
 
 export interface Exercise {

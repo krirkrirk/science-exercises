@@ -21,7 +21,7 @@ export interface Question {
   commands?: string[];
   coords?: number[];
   options?: any;
-  getPropositions?: (n: number) => Proposition[];
+  getPropositions: (n: number) => Proposition[];
 }
 
 export interface Exercise {

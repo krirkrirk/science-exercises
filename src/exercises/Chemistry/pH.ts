@@ -16,6 +16,8 @@ export const pH: Exercise = {
   isSingleStep: true,
   generator: (nb: number) => getDistinctQuestions(getpH, nb),
   keys: [],
+  qcmTimer: 60,
+  freeTimer: 60,
 };
 
 export function getpH(): Question {
@@ -68,8 +70,6 @@ export function getpH(): Question {
     keys: ['log'],
     getPropositions,
     answerFormat: 'tex',
-    qcmTimer: 60,
-    freeTimer: 60,
   };
   return question;
 }

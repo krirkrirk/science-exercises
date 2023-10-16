@@ -15,6 +15,8 @@ export const snellDescartes: Exercise = {
   isSingleStep: true,
   generator: (nb: number) => getDistinctQuestions(getSnellDescartes, nb),
   keys: [],
+  qcmTimer: 60,
+  freeTimer: 60,
 };
 
 export function getSnellDescartes(): Question {
@@ -87,8 +89,6 @@ export function getSnellDescartes(): Question {
     keys: ['sin', 'arcsin', 'degree'],
     getPropositions,
     answerFormat: 'tex',
-    qcmTimer: 60,
-    freeTimer: 60,
   };
   return question;
 }

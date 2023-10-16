@@ -15,6 +15,8 @@ export const potentialEnergy: Exercise = {
   isSingleStep: true,
   generator: (nb: number) => getDistinctQuestions(getPotentialEnergy, nb),
   keys: [],
+  qcmTimer: 60,
+  freeTimer: 60,
 };
 
 export function getPotentialEnergy(): Question {
@@ -65,8 +67,6 @@ export function getPotentialEnergy(): Question {
     keys: ['J'],
     getPropositions,
     answerFormat: 'tex',
-    qcmTimer: 60,
-    freeTimer: 60,
   };
   return question;
 }

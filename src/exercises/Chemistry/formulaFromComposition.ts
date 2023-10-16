@@ -18,6 +18,8 @@ export const formulaFromComposition: Exercise = {
   isSingleStep: true,
   generator: (nb: number) => getDistinctQuestions(getFormulaFromComposition, nb),
   keys: [],
+  qcmTimer: 60,
+  freeTimer: 60,
 };
 
 export function getFormulaFromComposition(): Question {
@@ -88,8 +90,6 @@ export function getFormulaFromComposition(): Question {
     keys: [...myRandomMolecule.atoms.map((el) => el.atom.name), 'underscore'],
     getPropositions,
     answerFormat: 'tex',
-    qcmTimer: 60,
-    freeTimer: 60,
   };
   return question;
 }

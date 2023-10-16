@@ -16,6 +16,8 @@ export const chemicalReactionsProduct: Exercise = {
   isSingleStep: true,
   generator: (nb: number) => getDistinctQuestions(getChemicalReactionsProduct, nb),
   keys: [],
+  qcmTimer: 60,
+  freeTimer: 60,
 };
 
 export function getChemicalReactionsProduct(): Question {
@@ -64,8 +66,6 @@ export function getChemicalReactionsProduct(): Question {
     keys: [...reaction.getUniqueAtomNames(), 'underscore'],
     getPropositions,
     answerFormat: 'tex',
-    qcmTimer: 60,
-    freeTimer: 60,
   };
   return question;
 }

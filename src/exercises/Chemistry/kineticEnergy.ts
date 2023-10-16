@@ -15,6 +15,8 @@ export const kineticEnergy: Exercise = {
   isSingleStep: true,
   generator: (nb: number) => getDistinctQuestions(getKineticEnergyQuestion, nb),
   keys: [],
+  qcmTimer: 60,
+  freeTimer: 60,
 };
 
 export function getKineticEnergyQuestion(): Question {
@@ -64,8 +66,6 @@ export function getKineticEnergyQuestion(): Question {
     keys: ['kJ'],
     getPropositions,
     answerFormat: 'tex',
-    qcmTimer: 60,
-    freeTimer: 60,
   };
   return question;
 }

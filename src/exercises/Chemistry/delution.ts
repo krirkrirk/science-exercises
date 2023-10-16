@@ -16,6 +16,8 @@ export const delution: Exercise = {
   isSingleStep: true,
   generator: (nb: number) => getDistinctQuestions(getDelution, nb),
   keys: [],
+  qcmTimer: 60,
+  freeTimer: 60,
 };
 
 export function getDelution(): Question {
@@ -82,8 +84,6 @@ export function getDelution(): Question {
     keys: ['mL'],
     getPropositions,
     answerFormat: 'tex',
-    qcmTimer: 60,
-    freeTimer: 60,
   };
   return question;
 }

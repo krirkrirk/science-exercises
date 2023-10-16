@@ -22,8 +22,6 @@ export interface Question {
   coords?: number[];
   options?: any;
   getPropositions: (n: number) => Proposition[];
-  qcmTimer?: number;
-  freeTimer?: number;
 }
 
 export interface Exercise {
@@ -38,6 +36,8 @@ export interface Exercise {
   generator(nb: number, options?: GeneratorOptions): Question[];
   subject: 'Chimie' | 'Physique';
   answerType?: 'QCM' | 'free';
+  qcmTimer: number;
+  freeTimer: number;
 }
 
 export type ScienceLevel = '6ème' | '5ème' | '4ème' | '3ème' | '2nde' | '1reSpé' | 'Term';

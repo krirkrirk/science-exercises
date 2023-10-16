@@ -15,6 +15,8 @@ export const moleculeNomenclature: Exercise = {
   isSingleStep: true,
   generator: (nb: number) => getDistinctQuestions(getMoleculeNomenclature, nb),
   keys: [],
+  qcmTimer: 60,
+  freeTimer: 60,
 };
 
 export function getMoleculeNomenclature(): Question {
@@ -64,8 +66,6 @@ export function getMoleculeNomenclature(): Question {
     keys: [],
     getPropositions,
     answerFormat: 'raw',
-    qcmTimer: 60,
-    freeTimer: 60,
   };
   return question;
 }

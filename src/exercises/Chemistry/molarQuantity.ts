@@ -17,6 +17,8 @@ export const molarQuantity: Exercise = {
   isSingleStep: true,
   generator: (nb: number) => getDistinctQuestions(getMolarQuantityQuestion, nb),
   keys: [],
+  qcmTimer: 60,
+  freeTimer: 60,
 };
 
 export function getMolarQuantityQuestion(): Question {
@@ -83,8 +85,6 @@ export function getMolarQuantityQuestion(): Question {
     keys: ['mol'],
     getPropositions,
     answerFormat: 'tex',
-    qcmTimer: 60,
-    freeTimer: 60,
   };
   return question;
 }

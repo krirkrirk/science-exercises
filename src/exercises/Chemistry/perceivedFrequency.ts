@@ -16,6 +16,8 @@ export const perceivedFrequency: Exercise = {
   isSingleStep: true,
   generator: (nb: number) => getDistinctQuestions(getPerceivedFrequency, nb),
   keys: [],
+  qcmTimer: 60,
+  freeTimer: 60,
 };
 
 export function getPerceivedFrequency(): Question {
@@ -67,8 +69,6 @@ export function getPerceivedFrequency(): Question {
     keys: ['Hz'],
     getPropositions,
     answerFormat: 'tex',
-    qcmTimer: 60,
-    freeTimer: 60,
   };
   return question;
 }

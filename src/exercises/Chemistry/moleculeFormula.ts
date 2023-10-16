@@ -64,6 +64,8 @@ export function getMoleculeNFormula(): Question {
     keys: [...myRandomMolecule.atoms.map((el) => el.atom.name), 'underscore'],
     getPropositions,
     answerFormat: 'tex',
+    qcmTimer: 60,
+    freeTimer: 60,
   };
   return question;
 }

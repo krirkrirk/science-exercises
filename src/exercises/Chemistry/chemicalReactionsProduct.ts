@@ -64,6 +64,8 @@ export function getChemicalReactionsProduct(): Question {
     keys: [...reaction.getUniqueAtomNames(), 'underscore'],
     getPropositions,
     answerFormat: 'tex',
+    qcmTimer: 60,
+    freeTimer: 60,
   };
   return question;
 }

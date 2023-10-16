@@ -68,6 +68,8 @@ export function getpH(): Question {
     keys: ['log'],
     getPropositions,
     answerFormat: 'tex',
+    qcmTimer: 60,
+    freeTimer: 60,
   };
   return question;
 }

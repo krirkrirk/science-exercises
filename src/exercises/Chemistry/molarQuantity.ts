@@ -83,6 +83,8 @@ export function getMolarQuantityQuestion(): Question {
     keys: ['mol'],
     getPropositions,
     answerFormat: 'tex',
+    qcmTimer: 60,
+    freeTimer: 60,
   };
   return question;
 }

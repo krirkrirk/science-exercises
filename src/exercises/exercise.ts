@@ -22,6 +22,8 @@ export interface Question {
   coords?: number[];
   options?: any;
   getPropositions: (n: number) => Proposition[];
+  qcmTimer?: number;
+  freeTimer?: number;
 }
 
 export interface Exercise {

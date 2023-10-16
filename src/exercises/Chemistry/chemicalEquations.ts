@@ -57,6 +57,8 @@ export function getChemicalEquations(): Question {
     keys: [...reaction.getSpeciesName(), 'rightarrow'],
     getPropositions,
     answerFormat: 'tex',
+    qcmTimer: 60,
+    freeTimer: 60,
   };
   return question;
 }

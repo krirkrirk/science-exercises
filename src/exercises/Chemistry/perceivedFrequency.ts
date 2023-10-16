@@ -67,6 +67,8 @@ export function getPerceivedFrequency(): Question {
     keys: ['Hz'],
     getPropositions,
     answerFormat: 'tex',
+    qcmTimer: 60,
+    freeTimer: 60,
   };
   return question;
 }

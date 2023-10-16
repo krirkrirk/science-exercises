@@ -64,6 +64,8 @@ export function getKineticEnergyQuestion(): Question {
     keys: ['kJ'],
     getPropositions,
     answerFormat: 'tex',
+    qcmTimer: 60,
+    freeTimer: 60,
   };
   return question;
 }

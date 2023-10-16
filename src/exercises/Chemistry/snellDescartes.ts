@@ -87,6 +87,8 @@ export function getSnellDescartes(): Question {
     keys: ['sin', 'arcsin', 'degree'],
     getPropositions,
     answerFormat: 'tex',
+    qcmTimer: 60,
+    freeTimer: 60,
   };
   return question;
 }

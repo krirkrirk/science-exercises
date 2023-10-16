@@ -64,6 +64,8 @@ export function getMoleculeNomenclature(): Question {
     keys: [],
     getPropositions,
     answerFormat: 'raw',
+    qcmTimer: 60,
+    freeTimer: 60,
   };
   return question;
 }

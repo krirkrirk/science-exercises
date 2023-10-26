@@ -24,7 +24,7 @@ export interface Question {
   startStatement?: string;
   answer: string;
   answerFormat: 'tex' | 'raw';
-  keys?: string[];
+  keys?: KeyId[];
   commands?: string[];
   coords?: number[];
   options?: any;

@@ -8,8 +8,9 @@ export function equalTab<T>(array1: T[], array2: T[]) {
   return true;
 }
 
-export const getDistinctQuestions = (generator: Function, nb: number): Question[] => {
+export const getDistinctQuestions = (generator: () => Question, nb: number, max?: number): Question[] => {
   const res: Question[] = [];
+  const trueStop = max === undefined ? nb : nb > max ? max : nb;
 
   for (let i = 0; i < nb; i++) {
     let question: Question;

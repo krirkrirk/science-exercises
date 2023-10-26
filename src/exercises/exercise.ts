@@ -1,9 +1,16 @@
-// export enum Connector {
-//   equal = "=",
-//   equiv = "\\iff",
-//   implies = "\\Rightarrow",
-// }
+import { KeyId } from '#root/types/keyId';
+import { uuid } from 'uuidv4';
 
+export const tryToAddWrongProp = (props: Proposition[], statement: string, format: 'tex' | 'raw' = 'tex') => {
+  if (!props.some((prop) => prop.statement === statement)) {
+    props.push({
+      id: uuid(),
+      statement,
+      isRightAnswer: false,
+      format: format,
+    });
+  }
+};
 export type GeneratorOptions = {};
 
 export type Proposition = {
@@ -24,7 +31,7 @@ export interface Question {
   getPropositions: (n: number) => Proposition[];
 }
 
-export interface Exercise {
+export interface ScienceExercise {
   id: string;
   instruction: string;
   isSingleStep: boolean;
@@ -32,7 +39,7 @@ export interface Exercise {
   sections: ScienceSection[];
   levels: ScienceLevel[];
   connector: '=' | '\\iff' | '\\approx';
-  keys?: string[];
+  keys?: KeyId[];
   generator(nb: number, options?: GeneratorOptions): Question[];
   subject: 'Chimie' | 'Physique';
   answerType?: 'QCM' | 'free';

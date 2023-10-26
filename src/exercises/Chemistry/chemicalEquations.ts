@@ -1,10 +1,10 @@
-import { Exercise, Proposition, Question } from '#root/exercises/exercise';
+import { ScienceExercise, Proposition, Question } from '#root/exercises/exercise';
 import { getDistinctQuestions } from '#root/exercises/utils/getDistinctQuestions';
 import { ReactionConstructor } from '#root/exercises/utils/molecularChemistry/reaction';
 import { shuffle } from '#root/exercises/utils/shuffle';
 import { v4 } from 'uuid';
 
-export const chemicalEquations: Exercise = {
+export const chemicalEquations: ScienceExercise = {
   id: 'chemicalEquations',
   connector: '\\iff',
   instruction: '',

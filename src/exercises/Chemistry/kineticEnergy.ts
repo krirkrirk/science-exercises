@@ -1,10 +1,10 @@
-import { Exercise, Proposition, Question } from '#root/exercises/exercise';
+import { ScienceExercise, Proposition, Question } from '#root/exercises/exercise';
 import { getDistinctQuestions } from '#root/exercises/utils/getDistinctQuestions';
 import { round } from '#root/exercises/utils/math/round';
 import { shuffle } from '#root/exercises/utils/shuffle';
 import { v4 } from 'uuid';
 
-export const kineticEnergy: Exercise = {
+export const kineticEnergy: ScienceExercise = {
   id: 'kineticEnergy',
   connector: '=',
   instruction: '',

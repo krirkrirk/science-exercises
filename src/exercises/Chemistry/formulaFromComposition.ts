@@ -1,4 +1,4 @@
-import { Exercise, Proposition, Question } from '#root/exercises/exercise';
+import { ScienceExercise, Proposition, Question } from '#root/exercises/exercise';
 import { getDistinctQuestions } from '#root/exercises/utils/getDistinctQuestions';
 import { randint } from '#root/exercises/utils/math/random/randint';
 import { round } from '#root/exercises/utils/math/round';
@@ -7,7 +7,7 @@ import { molecules } from '#root/exercises/utils/molecularChemistry/molecule';
 import { shuffle } from '#root/exercises/utils/shuffle';
 import { v4 } from 'uuid';
 
-export const formulaFromComposition: Exercise = {
+export const formulaFromComposition: ScienceExercise = {
   id: 'formulaFromComposition',
   connector: '\\iff',
   instruction: '',

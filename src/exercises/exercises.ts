@@ -10,9 +10,9 @@ import { pH } from '#root/exercises/Chemistry/pH';
 import { perceivedFrequency } from '#root/exercises/Chemistry/perceivedFrequency';
 import { potentialEnergy } from '#root/exercises/Chemistry/potentialEnergy';
 import { snellDescartes } from '#root/exercises/Chemistry/snellDescartes';
-import { Exercise } from './exercise';
+import { ScienceExercise } from './exercise';
 
-export const exercises: Exercise[] = [
+export const exercises: ScienceExercise[] = [
   chemicalEquations,
   chemicalReactionsProduct,
   delution,

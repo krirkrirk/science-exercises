@@ -1,11 +1,11 @@
-import { Exercise, Proposition, Question } from '#root/exercises/exercise';
+import { ScienceExercise, Proposition, Question } from '#root/exercises/exercise';
 import { getDistinctQuestions } from '#root/exercises/utils/getDistinctQuestions';
 import { randint } from '#root/exercises/utils/math/random/randint';
 import { round } from '#root/exercises/utils/math/round';
 import { shuffle } from '#root/exercises/utils/shuffle';
 import { v4 } from 'uuid';
 
-export const perceivedFrequency: Exercise = {
+export const perceivedFrequency: ScienceExercise = {
   id: 'perceivedFrequency',
   connector: '\\iff',
   instruction: '',

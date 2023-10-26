@@ -2,6 +2,7 @@ import { ScienceExercise, Proposition, Question } from '#root/exercises/exercise
 import { getDistinctQuestions } from '#root/exercises/utils/getDistinctQuestions';
 import { ReactionConstructor } from '#root/exercises/utils/molecularChemistry/reaction';
 import { shuffle } from '#root/exercises/utils/shuffle';
+import { KeyId } from '#root/types/keyId';
 import { v4 } from 'uuid';
 
 export const chemicalEquations: ScienceExercise = {

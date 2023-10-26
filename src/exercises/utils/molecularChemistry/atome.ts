@@ -1,7 +1,8 @@
+import { KeyId } from '#root/types/keyId';
 import { AtomSymbols } from './atomSymbols';
 
 export class Atome {
-  name: string;
+  name: KeyId;
   symbole: AtomSymbols;
   numeroAtomique: number;
   masseAtomique: number;
@@ -13,7 +14,7 @@ export class Atome {
   pointFusion: number;
 
   constructor(
-    name: string,
+    name: KeyId,
     symbole: AtomSymbols,
     numeroAtomique: number,
     masseAtomique: number,

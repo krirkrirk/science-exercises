@@ -1,4 +1,5 @@
 import { randint } from '#root/exercises/utils/math/random/randint';
+import { KeyId } from '#root/types/keyId';
 import { Molecule, molecules } from './molecule';
 
 interface ReactionSpecies {
@@ -447,8 +448,8 @@ export class Reaction {
     return `$${reactantsString} \\rightarrow ${productsString}$`;
   }
 
-  getUniqueAtomNames(): string[] {
-    const uniqueAtomNames = new Set<string>();
+  getUniqueAtomNames(): KeyId[] {
+    const uniqueAtomNames = new Set<KeyId>();
 
     for (const reactionSpecies of this.reactionArray) {
       if (reactionSpecies.species) {
@@ -472,8 +473,8 @@ export class Reaction {
 
     return speciesFormula;
   }
-  getSpeciesName(): string[] {
-    const speciesFormula: string[] = [];
+  getSpeciesName(): KeyId[] {
+    const speciesFormula: KeyId[] = [];
 
     for (const reactionSpecies of this.reactionArray) {
       if (reactionSpecies.species) {

@@ -1,3 +1,4 @@
+import { KeyId } from '#root/types/keyId';
 import { Atome, atomes } from './atome';
 
 interface AtomShortcut {
@@ -9,7 +10,7 @@ type AtomsData = {
   count: number;
 };
 export class Molecule {
-  name: string;
+  name: KeyId;
   formula: string;
   weight: number;
   atoms: AtomsData[];
@@ -19,7 +20,7 @@ export class Molecule {
   type?: string;
 
   constructor(
-    name: string,
+    name: KeyId,
     formula: string,
     weight: number,
     atoms: AtomShortcut[],

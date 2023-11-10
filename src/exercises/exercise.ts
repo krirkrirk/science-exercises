@@ -26,7 +26,7 @@ export type Proposition = {
   format: 'tex' | 'raw';
 };
 export interface Question {
-  instruction?: string;
+  instruction: string;
   startStatement?: string;
   answer: string;
   answerFormat: 'tex' | 'raw';
@@ -34,17 +34,18 @@ export interface Question {
   commands?: string[];
   coords?: number[];
   options?: any;
+  divisionFormat?: 'fraction' | 'obelus';
   getPropositions: (n: number) => Proposition[];
 }
 
 export interface ScienceExercise {
   id: string;
-  instruction: string;
+  instruction?: string;
   isSingleStep: boolean;
   label: string;
   sections: ScienceSection[];
   levels: ScienceLevel[];
-  connector: '=' | '\\iff' | '\\approx';
+  connector?: '=' | '\\iff' | '\\approx';
   keys?: KeyId[];
   generator(nb: number, options?: GeneratorOptions): Question[];
   subject: 'Chimie' | 'Physique';

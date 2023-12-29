@@ -1,65 +1,67 @@
-import { ScienceExercise, Proposition, Question } from '#root/exercises/exercise';
-import { getDistinctQuestions } from '#root/exercises/utils/getDistinctQuestions';
-import { ReactionConstructor } from '#root/exercises/utils/molecularChemistry/reaction';
-import { shuffle } from '#root/exercises/utils/shuffle';
-import { KeyId } from '#root/types/keyId';
-import { v4 } from 'uuid';
+import {
+  ScienceExercise,
+  Proposition,
+  Question,
+  QuestionGenerator,
+  QCMGenerator,
+  addValidProp,
+  tryToAddWrongProp,
+  VEA,
+} from "#root/exercises/exercise";
+import { getDistinctQuestions } from "#root/exercises/utils/getDistinctQuestions";
+import {
+  Reaction,
+  ReactionConstructor,
+  ReactionSpecies,
+} from "#root/exercises/utils/molecularChemistry/reaction";
+import { shuffle } from "#root/exercises/utils/shuffle";
 
-export const chemicalEquations: ScienceExercise = {
-  id: 'chemicalEquations',
-  connector: '\\iff',
-  instruction: '',
-  label: 'Équilibrer une réaction chimique',
-  levels: ['4ème', '3ème', '2nde'],
-  sections: ['Réaction chimique'],
-  subject: 'Chimie',
-  isSingleStep: true,
-  generator: (nb: number) => getDistinctQuestions(getChemicalEquations, nb),
-  keys: [],
-  qcmTimer: 60,
-  freeTimer: 60,
+type Identifiers = {
+  reactionArray: ReactionSpecies[];
 };
-
-export function getChemicalEquations(): Question {
+const getChemicalEquations: QuestionGenerator<Identifiers> = () => {
   const reaction = ReactionConstructor.randomReaction();
-
-  const getPropositions = (n: number) => {
-    const res: Proposition[] = [];
-
-    res.push({
-      id: v4() + '',
-      statement: reaction.getReactionString(),
-      isRightAnswer: true,
-      format: 'tex',
-    });
-
-    for (let i = 0; i < n - 1; i++) {
-      let isDuplicate: boolean;
-      let proposition: Proposition;
-
-      do {
-        proposition = {
-          id: v4() + '',
-          statement: reaction.getReactionWithWrongCoef(),
-          isRightAnswer: false,
-          format: 'tex',
-        };
-
-        isDuplicate = res.some((p) => p.statement === proposition.statement);
-      } while (isDuplicate);
-
-      res.push(proposition);
-    }
-
-    return shuffle(res);
-  };
-
-  const question: Question = {
-    instruction: 'Equilibrez la réaction suivante :$\\\\$ ' + reaction.getReactionWithoutCoef(),
-    answer: reaction.getReactionString(),
-    keys: [...reaction.getSpeciesName(), 'rightarrow'],
-    getPropositions,
-    answerFormat: 'tex',
+  const answer = reaction.getReactionString();
+  const question: Question<Identifiers> = {
+    instruction:
+      "Equilibrez la réaction suivante :$\\\\$ " +
+      reaction.getReactionWithoutCoef(),
+    answer,
+    keys: [...reaction.getSpeciesName(), "rightarrow"],
+    answerFormat: "tex",
+    identifiers: { reactionArray: reaction.reactionArray },
   };
   return question;
-}
+};
+
+const getPropositions: QCMGenerator<Identifiers> = (
+  n,
+  { answer, reactionArray },
+) => {
+  const propositions: Proposition[] = [];
+  const reaction = new Reaction(reactionArray);
+  addValidProp(propositions, answer);
+
+  while (propositions.length < n) {
+    tryToAddWrongProp(propositions, reaction.getReactionWithWrongCoef());
+  }
+  return shuffle(propositions);
+};
+
+const isAnswerValid: VEA<Identifiers> = (ans, { answer }) => {
+  return ans === answer;
+};
+export const chemicalEquations: ScienceExercise<Identifiers> = {
+  id: "chemicalEquations",
+  connector: "\\iff",
+  label: "Équilibrer une réaction chimique",
+  levels: ["4ème", "3ème", "2nde"],
+  sections: ["Réaction chimique"],
+  subject: "Chimie",
+  isSingleStep: true,
+  generator: (nb: number) => getDistinctQuestions(getChemicalEquations, nb),
+  qcmTimer: 60,
+  freeTimer: 60,
+  getPropositions,
+  isAnswerValid,
+};

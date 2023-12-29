@@ -1,71 +1,75 @@
-import { ScienceExercise, Proposition, Question } from '#root/exercises/exercise';
-import { getDistinctQuestions } from '#root/exercises/utils/getDistinctQuestions';
-import { molecules } from '#root/exercises/utils/molecularChemistry/molecule';
-import { shuffle } from '#root/exercises/utils/shuffle';
-import { v4 } from 'uuid';
+import {
+  ScienceExercise,
+  Proposition,
+  Question,
+  QuestionGenerator,
+  QCMGenerator,
+  addValidProp,
+  tryToAddWrongProp,
+  VEA,
+} from "#root/exercises/exercise";
+import { getDistinctQuestions } from "#root/exercises/utils/getDistinctQuestions";
+import { molecules } from "#root/exercises/utils/molecularChemistry/molecule";
+import { shuffle } from "#root/exercises/utils/shuffle";
 
-export const moleculeNomenclature: ScienceExercise = {
-  id: 'moleculeNomenclature',
-  connector: '\\iff',
-  instruction: '',
-  label: "Donner le nom d'une molécule à partir de sa formule développée",
-  levels: ['4ème', '3ème', '2nde'],
-  sections: ['Chimie organique'],
-  subject: 'Chimie',
-  isSingleStep: true,
-  generator: (nb: number) => getDistinctQuestions(getMoleculeNomenclature, nb),
-  keys: [],
-  qcmTimer: 60,
-  freeTimer: 60,
+type Identifiers = {
+  randomMoleculeIndex: number;
 };
 
-export function getMoleculeNomenclature(): Question {
-  const organicMolecule = molecules.filter((molecule) => molecule.isOrganic && molecule.type);
-  const randomMoleculeIndex = Math.floor(Math.random() * organicMolecule.length);
+const getMoleculeNomenclature: QuestionGenerator<Identifiers> = () => {
+  const organicMolecule = molecules.filter(
+    (molecule) => molecule.isOrganic && molecule.type,
+  );
+  const randomMoleculeIndex = Math.floor(
+    Math.random() * organicMolecule.length,
+  );
   const myRandomMolecule = organicMolecule[randomMoleculeIndex];
 
   const instruction = `Donner le nom de la molécule suivante : 
   $\\\\$ ![](https://heureuxhasarddocsbucket.s3.eu-west-3.amazonaws.com/xpliveV2/scienceAssets/molecules/${myRandomMolecule.formula}.png)`;
 
-  const getPropositions = (n: number) => {
-    const res: Proposition[] = [];
-
-    res.push({
-      id: v4() + '',
-      statement: myRandomMolecule.name,
-      isRightAnswer: true,
-      format: 'raw',
-    });
-
-    for (let i = 0; i < n - 1; i++) {
-      let isDuplicate: boolean;
-      let proposition: Proposition;
-
-      do {
-        const randomMoleculeIndex = Math.floor(Math.random() * organicMolecule.length);
-        const myRandomMolecule = organicMolecule[randomMoleculeIndex];
-        proposition = {
-          id: v4() + '',
-          statement: myRandomMolecule.name,
-          isRightAnswer: false,
-          format: 'raw',
-        };
-
-        isDuplicate = res.some((p) => p.statement === proposition.statement);
-      } while (isDuplicate);
-
-      res.push(proposition);
-    }
-
-    return shuffle(res);
-  };
-
-  const question: Question = {
+  const question: Question<Identifiers> = {
     instruction,
     answer: myRandomMolecule.iupact!,
     keys: [],
-    getPropositions,
-    answerFormat: 'raw',
+    answerFormat: "raw",
+    identifiers: { randomMoleculeIndex },
   };
   return question;
-}
+};
+
+const getPropositions: QCMGenerator<Identifiers> = (n, { answer }) => {
+  const propositions: Proposition[] = [];
+  addValidProp(propositions, answer);
+  const organicMolecule = molecules.filter(
+    (molecule) => molecule.isOrganic && molecule.type,
+  );
+  while (propositions.length < n) {
+    const randomMoleculeIndex = Math.floor(
+      Math.random() * organicMolecule.length,
+    );
+    const myRandomMolecule = organicMolecule[randomMoleculeIndex];
+    tryToAddWrongProp(propositions, myRandomMolecule.name, "raw");
+  }
+
+  return shuffle(propositions);
+};
+
+const isAnswerValid: VEA<Identifiers> = (ans, { answer }) => {
+  return ans === answer;
+};
+
+export const moleculeNomenclature: ScienceExercise<Identifiers> = {
+  id: "moleculeNomenclature",
+  connector: "\\iff",
+  label: "Donner le nom d'une molécule à partir de sa formule développée",
+  levels: ["4ème", "3ème", "2nde"],
+  sections: ["Chimie organique"],
+  subject: "Chimie",
+  isSingleStep: true,
+  generator: (nb: number) => getDistinctQuestions(getMoleculeNomenclature, nb),
+  qcmTimer: 60,
+  freeTimer: 60,
+  getPropositions,
+  isAnswerValid,
+};

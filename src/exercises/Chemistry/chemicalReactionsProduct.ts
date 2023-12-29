@@ -1,71 +1,80 @@
-import { ScienceExercise, Proposition, Question } from '#root/exercises/exercise';
-import { getDistinctQuestions } from '#root/exercises/utils/getDistinctQuestions';
-import { v4 } from 'uuid';
-import { ReactionConstructor, molecules } from '#root/exercises/utils/molecularChemistry/reaction';
-import { shuffle } from '#root/exercises/utils/shuffle';
-import { randint } from '#root/exercises/utils/math/random/randint';
+import {
+  ScienceExercise,
+  Proposition,
+  Question,
+  QuestionGenerator,
+  addValidProp,
+  QCMGenerator,
+  tryToAddWrongProp,
+  VEA,
+} from "#root/exercises/exercise";
+import { getDistinctQuestions } from "#root/exercises/utils/getDistinctQuestions";
+import { v4 } from "uuid";
+import {
+  ReactionConstructor,
+  ReactionSpecies,
+  molecules,
+} from "#root/exercises/utils/molecularChemistry/reaction";
+import { shuffle } from "#root/exercises/utils/shuffle";
+import { randint } from "#root/exercises/utils/math/random/randint";
 
-export const chemicalReactionsProduct: ScienceExercise = {
-  id: 'chemicalReactionsProduct',
-  connector: '\\iff',
-  instruction: '',
-  label: "Identifier le produit ou le réactif manquant d'une réaction chimique donnée",
-  levels: ['4ème', '3ème', '2nde'],
-  sections: ['Réaction chimique'],
-  subject: 'Chimie',
-  isSingleStep: true,
-  generator: (nb: number) => getDistinctQuestions(getChemicalReactionsProduct, nb),
-  keys: [],
-  qcmTimer: 60,
-  freeTimer: 60,
+type Identifiers = {
+  reactionArray: ReactionSpecies[];
+  randomSpacieIndex: number;
 };
 
-export function getChemicalReactionsProduct(): Question {
+const getChemicalReactionsProduct: QuestionGenerator<Identifiers> = () => {
   const reaction = ReactionConstructor.randomReaction();
   const randomSpacieIndex = randint(0, reaction.reactionArray.length);
   const randomSpacie = reaction.reactionArray[randomSpacieIndex];
   const randomSpacieFormula = randomSpacie.species?.formula;
-  const randomSpacieCoef = Math.abs(randomSpacie.coefficient) === 1 ? '' : Math.abs(randomSpacie.coefficient);
+  const randomSpacieCoef =
+    Math.abs(randomSpacie.coefficient) === 1
+      ? ""
+      : Math.abs(randomSpacie.coefficient);
 
-  const getPropositions = (n: number) => {
-    const res: Proposition[] = [];
-
-    res.push({
-      id: v4() + '',
-      statement: randomSpacieFormula + '',
-      isRightAnswer: true,
-      format: 'tex',
-    });
-
-    for (let i = 0; i < n - 1; i++) {
-      let isDuplicate: boolean;
-      let proposition: Proposition;
-
-      do {
-        proposition = {
-          id: v4() + '',
-          statement: molecules[randint(0, molecules.length)].formula,
-          isRightAnswer: false,
-          format: 'tex',
-        };
-
-        isDuplicate = res.some((p) => p.statement === proposition.statement);
-      } while (isDuplicate);
-
-      res.push(proposition);
-    }
-
-    return shuffle(res);
-  };
-
-  const question: Question = {
+  const answer = randomSpacieCoef + "" + randomSpacieFormula;
+  const question: Question<Identifiers> = {
     instruction:
       "Completer la réaction suivante en donnant l'élement manquant : $\\\\$ " +
       reaction.getReactionWithQuestionMark(randomSpacieIndex),
-    answer: randomSpacieCoef + '' + randomSpacieFormula,
-    keys: [...reaction.getUniqueAtomNames(), 'underscore'],
-    getPropositions,
-    answerFormat: 'tex',
+    answer,
+    keys: [...reaction.getUniqueAtomNames(), "underscore"],
+    answerFormat: "tex",
+    identifiers: { reactionArray: reaction.reactionArray, randomSpacieIndex },
   };
   return question;
-}
+};
+
+const getPropositions: QCMGenerator<Identifiers> = (n, { answer }) => {
+  const propositions: Proposition[] = [];
+  addValidProp(propositions, answer);
+
+  while (propositions.length < n) {
+    tryToAddWrongProp(
+      propositions,
+      molecules[randint(0, molecules.length)].formula,
+    );
+  }
+
+  return shuffle(propositions);
+};
+const isAnswerValid: VEA<Identifiers> = (ans, { answer }) => {
+  return ans === answer;
+};
+export const chemicalReactionsProduct: ScienceExercise<Identifiers> = {
+  id: "chemicalReactionsProduct",
+  connector: "\\iff",
+  label:
+    "Identifier le produit ou le réactif manquant d'une réaction chimique donnée",
+  levels: ["4ème", "3ème", "2nde"],
+  sections: ["Réaction chimique"],
+  subject: "Chimie",
+  isSingleStep: true,
+  generator: (nb: number) =>
+    getDistinctQuestions(getChemicalReactionsProduct, nb),
+  qcmTimer: 60,
+  freeTimer: 60,
+  getPropositions,
+  isAnswerValid,
+};
